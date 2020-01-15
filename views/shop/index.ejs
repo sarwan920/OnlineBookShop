@@ -1,0 +1,26 @@
+<%-include('../includes/head.ejs')%>
+<link rel="stylesheet" href="/css/main.css" />
+<link rel="stylesheet" href="/css/product.css" />
+<body>
+  <%-include('../includes/navigation.ejs')%>
+  <main class="animated zoomIn">
+    <h1>My Products</h1>
+    <p>List of the all Products</p>
+    <% if(prods.length>0) {%> <% for(let product of prods) {%>
+    <div class="card">
+      <header class="card__header">
+        <h1 class="product_title"><%=product.title%></h1>
+      </header>
+      <img src=<%=product.imgURL%> alt="Book Image" style="width:100%">
+      <div class="container">
+        <h3 class="product_price"><%=product.price%></h3>
+        <h4><%=product.description%></h4>
+        <%-include('../includes/add-to-cart.ejs',{product:product})%>
+      </div>
+    </div>
+    <%} %> <%} else {%>
+    <h1>No Products Found!</h1>
+    <% }%>
+  </main>
+  <%-include('../includes/end.ejs')%>
+</body>

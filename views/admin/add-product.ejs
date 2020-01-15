@@ -1,0 +1,29 @@
+<%-include('../includes/head.ejs')%>
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/product.css" />
+  </head>
+  <body>
+ <%-include('../includes/navigation.ejs')%>
+
+    <main>
+      <form class="product-form" method="POST" action="/admin/add-product">
+        <div class="form-control">
+          <label for="title">Title</label>
+          <input type="text" name="title" autocomplete="off" id="title" />
+        </div>
+        <div class="form-control">
+          <label for="price">Price</label>
+          <input type="number" name="price" autocomplete="off" id="price" />
+        </div>
+        <div class="form-control">
+          <label for="imageURL">Insert Image URL</label>
+          <input type="text" name="imageURL" autocomplete="off" id="imageURL" />
+        </div>
+        <div class="form-control">
+          <label for="description">Product Description</label>
+          <textarea name="description" id="" rows="10"></textarea>
+        </div>
+        <button class="add_product_button" type="submit">Add Product</button>
+      </form>
+    </main>
+ <%-include('../includes/end.ejs')%>
