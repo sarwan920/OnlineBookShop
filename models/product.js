@@ -1,9 +1,9 @@
 const fs = require("fs");
 const path = require("path");
-const random_id=require('random-id');
+const random_id = require("random-id");
 
-let len=20;
-let pattern="aA0";
+let len = 20;
+let pattern = "aA0";
 
 const p = path.join(
   path.dirname(process.mainModule.filename),
@@ -30,7 +30,7 @@ module.exports = class Products {
   }
 
   save() {
-    this.id=random_id(len,pattern);
+    this.id = random_id(len, pattern);
     console.log(this.id);
     getProductsFromFile(products => {
       products.push(this);
@@ -44,19 +44,17 @@ module.exports = class Products {
     getProductsFromFile(cb);
   }
 
-  static findById(id,cb){
-    getProductsFromFile(products=>{
-      const product=products.find(p=> p.id==id);
+  static findById(id, cb) {
+    getProductsFromFile(products => {
+      const product = products.find(p => p.id == id);
       cb(product);
     });
   }
 
-  static deleteById(id){
-    getProductsFromFile(products=>{
-      const product=products.splice(id,1);
+  static deleteById(id) {
+    getProductsFromFile(products => {
+      const product = products.splice(id, 1);
       cb(product);
     });
   }
-
-
 };
