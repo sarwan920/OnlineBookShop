@@ -46,7 +46,8 @@ outline:none;
 .add_to_cart_button {
 
     display: inline-block;
-    padding: 0.25rem 1rem;
+    /* padding: 0.25rem 1rem; */
+    width: 65%;
     text-decoration: none;
     font: inherit;
     border: 1px solid #42b883;
@@ -54,15 +55,14 @@ outline:none;
     background: white;
     border-radius: 3px;
     cursor: pointer;
-    padding: 5px;
+    padding: 5px 0;
     margin: 5px;
   
 
 }
 
 .add_product_button{
-
-    display: inline-block;
+  display: inline-block;
   padding: 0.25rem 1rem;
   text-decoration: none;
   font: inherit;
