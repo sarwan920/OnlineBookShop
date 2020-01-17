@@ -11,10 +11,10 @@
       <header class="card__header">
         <h1 class="product_title"><%=product.title%></h1>
       </header>
-      <img src=<%=product.imgURL%> alt="Book Image" style="width:100%">
+      <img src=<%=product.imgURL%> alt="Book Image" style="width:100%; height:280px; ">
       <div class="container">
         <h3 class="product_price"><%=product.price%></h3>
-        <h4><%=product.description%></h4>
+        <a href="/products/<%=product.id%>" class="add_to_cart_button">Details</a>
         <%-include('../includes/add-to-cart.ejs',{product:product})%>
       </div>
     </div>
