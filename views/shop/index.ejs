@@ -13,7 +13,7 @@
       </header>
       <img src=<%=product.imgURL%> alt="Book Image" style="width:100%; height:280px; ">
       <div class="container">
-        <h3 class="product_price"><%=product.price%></h3>
+        <h3 class="product_price">$<%=product.price%></h3>
         <a href="/products/<%=product.id%>" class="add_to_cart_button">Details</a>
         <%-include('../includes/add-to-cart.ejs',{product:product})%>
       </div>
