@@ -46,12 +46,12 @@ exports.postCart=(req,res,next)=>{
 
   Product.findById(prodId,(product)=>{
 
-     let productPrice  = Number(product.price);
+    //  let productPrice  = Number(product.price);
 
     // let x = +product.price;
 
     // Cart.addProduct(prodId,product.price)
-    Cart.addProduct(prodId,productPrice)
+    Cart.addProduct(prodId,product.price);
 
   });
 

@@ -9,9 +9,7 @@ const p = path.join(
 
 module.exports = class Cart {
   static addProduct(id, productPrice) {
-    
-
-    let productPriceNumber = +productPrice;
+    // let productPriceNumber = productPrice;
     // console.log(`id is ${id} and price is ${productPrice}`);
 
     fs.readFile(p, (err, fileContent) => {
@@ -37,8 +35,7 @@ module.exports = class Cart {
 
       //  cart.totalPrice = cart.totalPrice+ productPrice;
 
-          cart.totalPrice = cart.totalPrice + productPriceNumber;
-
+      cart.totalPrice = cart.totalPrice + productPrice;
 
       fs.writeFile(p, JSON.stringify(cart), err => {
         console.log(err);
