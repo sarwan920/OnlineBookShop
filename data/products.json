@@ -1,6 +1,5 @@
 [
   {
-  
     "title": "Zero To One",
     "description": "This book is for those legends who want to acheive alot in their life",
     "price": 20.22,
@@ -69,5 +68,19 @@
     "imgURL": "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg",
     "description": "Good book",
     "id": "fQN5WN5TzGIA9BzJMTGO"
+  },
+  {
+    "title": "",
+    "price": 0,
+    "imgURL": "",
+    "description": "",
+    "id": "SeRjmf7j6moxCOTW4Ccs"
+  },
+  {
+    "title": "",
+    "price": 0,
+    "imgURL": "",
+    "description": "",
+    "id": "uYf6RhNr0j5q3WQ2s4vd"
   }
 ]

@@ -4,7 +4,8 @@ exports.getAddProduct = (req, res, next) => {
   // res.sendFile(path.join(rootDir, "views", "add-product.html"));
   res.render("admin/edit-product", {
     pageTitle: "Add Products",
-    path: "/admin/add-product"
+    path: "/admin/add-product",
+    editing: false
   });
 };
 
@@ -20,15 +21,23 @@ exports.postAddProduct = (req, res, next) => {
 
 exports.getEditProduct = (req, res, next) => {
   const editMode = req.query.edit;
+
   if (!editMode) {
     return res.redirect("/");
-  } else {
+  }
+
+  const prodId = req.params.productId;
+  Product.findById(prodId, product => {
+    if (!product) {
+      return res.redirect("/");
+    }
     res.render("admin/edit-product", {
       pageTitle: "Edit Product",
       path: "/admin/edit-product",
-      editing: editMode
+      editing: editMode,
+      product: product
     });
-  }
+  });
 };
 
 exports.getProducts = (req, res, next) => {
