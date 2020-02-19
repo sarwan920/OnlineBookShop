@@ -5,6 +5,12 @@
     
 }
 
+input:focus, textarea:focus {
+  outline: none;
+  border-color: #42b883;
+  box-shadow: 0 0 12px #42b883;
+}
+
 .form-control label{
     color: #42b883;
 }
@@ -88,7 +94,7 @@ outline:none;
   }
   
   .card:hover {
-    box-shadow: 0 8px 16px 0 #00000033;
+    box-shadow: 0 0px 30px 0 #42b883;
   }
   
 

@@ -31,7 +31,6 @@ module.exports = class Products {
 
   save() {
     this.id = random_id(len, pattern);
-    console.log(this.id);
     getProductsFromFile(products => {
       products.push(this);
       fs.writeFile(p, JSON.stringify(products), err => {
@@ -51,10 +50,13 @@ module.exports = class Products {
     });
   }
 
-  static deleteById(id) {
-    getProductsFromFile(products => {
-      const product = products.splice(id, 1);
-      cb(product);
-    });
-  }
+  // static deleteById(id) {
+  //   getProductsFromFile(products => {
+  //     const product = products.splice(id, 1);
+  //     cb(product);
+  //   });
+  // }
 };
+
+
+

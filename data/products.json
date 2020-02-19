@@ -70,17 +70,10 @@
     "id": "fQN5WN5TzGIA9BzJMTGO"
   },
   {
-    "title": "",
-    "price": 0,
-    "imgURL": "",
-    "description": "",
-    "id": "SeRjmf7j6moxCOTW4Ccs"
-  },
-  {
-    "title": "",
-    "price": 0,
-    "imgURL": "",
-    "description": "",
-    "id": "uYf6RhNr0j5q3WQ2s4vd"
+    "title": "War And Peace",
+    "price": 34.33,
+    "imgURL": "https://images4.penguinrandomhouse.com/cover/9781400079988",
+    "description": "This is the most loveable book",
+    "id": "2R47iyVISeScoAtW2NQn"
   }
 ]

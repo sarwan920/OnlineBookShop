@@ -28,6 +28,7 @@ exports.getEditProduct = (req, res, next) => {
 
   const prodId = req.params.productId;
   Product.findById(prodId, product => {
+   
     if (!product) {
       return res.redirect("/");
     }
@@ -45,7 +46,8 @@ exports.getProducts = (req, res, next) => {
     res.render("admin/products", {
       pageTitle: "Admin Products",
       prods: products,
-      path: "/admin/products"
+      path: "/admin/products",
+      editing:true
     });
   });
 };

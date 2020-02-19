@@ -6,25 +6,33 @@
  <%-include('../includes/navigation.ejs')%>
 
     <main>
-      <form class="product-form" 
+      <form onsubmit="return validate();"    class="product-form" 
             method="POST" 
             action="/admin/<%if(editing)
             {%>edit-product<%}
-            else
-            {%>add-product<%}%>"
+          else
+            {%>add-product<%}%>" 
             >
 
         
         <div class="form-control">
           <label for="title">Title</label>
           <input type="text" name="title" autocomplete="off" id="title"
-           value="<%if(editing){%> <%=product.title%> <%}%>"/>
+           value="<%if(editing){%>
+                  
+                    <%=product.title%> 
+                  
+                  <%}%>"/>
         </div>
 
 
         <div class="form-control">
           <label for="price">Price</label>
-          <input type="number" name="price" 
+          <input type="<%if(editing)
+                        {%>text<%}
+                        else
+                        {%>number<%}
+                        %>" name="price" 
           value="<%if(editing){%> <%=product.price%><%}%>"
           autocomplete="off" id="price" step="0.01" />
         </div>
@@ -32,7 +40,7 @@
 
         <div class="form-control">
           <label for="imageURL">Insert Image URL</label>
-          <input type="text" name="imageURL" 
+          <input  type="text" name="imageURL" 
           value="<%if(editing){%> <%=product.imgURL%> <%}%>"
           autocomplete="off" id="imageURL" />
         </div>
@@ -45,12 +53,13 @@
         </div>
 
 
-        <button class="add_product_button" type="submit">
+        <button  class="add_product_button" type="submit">
           <% if(!editing)
           {%>Add Product <%} 
           else 
           {%>Update Product <%}%>  
         </button>
       </form>
+   
     </main>
  <%-include('../includes/end.ejs')%>
