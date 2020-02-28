@@ -2,11 +2,22 @@
 <link rel="stylesheet" href="/css/main.css" />
 <link rel="stylesheet" href="/css/product.css" />
 <body>
+
   <%-include('../includes/navigation.ejs')%>
+
   <main class="animated fadeIn">
+
     <h1>My Products</h1>
+
     <p>List of the all Products</p>
-    <% if(prods.length>0) {%> <% for(let product of prods) {%>
+
+
+    <% if(prods.length>0) {%> 
+
+        <% for(let product of prods) 
+
+      {%>
+
     <div class="card">
       <header class="card__header">
         <h1 class="product_title"><%=product.title%></h1>
@@ -18,9 +29,13 @@
         <%-include('../includes/add-to-cart.ejs',{product:product})%>
       </div>
     </div>
+    
     <%} %> <%} else {%>
     <h1>No Products Found!</h1>
     <% }%>
+
+
+
   </main>
   <%-include('../includes/end.ejs')%>
 </body>

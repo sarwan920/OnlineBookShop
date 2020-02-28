@@ -18,11 +18,7 @@
         <div class="form-control">
           <label for="title">Title</label>
           <input type="text" name="title" autocomplete="off" id="title"
-           value="<%if(editing){%>
-                  
-                    <%=product.title%> 
-                  
-                  <%}%>"/>
+           value="<%if(editing){%><%=product.title%><%}%>"/>
         </div>
 
 
@@ -52,6 +48,9 @@
           ><%if(editing){%> <%=product.description%> <%}%></textarea>
         </div>
 
+        <%if(editing){%>
+          <input type="hidden" value="<%=product.id%>" name="productId">
+          <%}%>
 
         <button  class="add_product_button" type="submit">
           <% if(!editing)

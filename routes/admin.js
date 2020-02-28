@@ -1,8 +1,10 @@
-const path = require("path");
+
 
 const express = require("express");
 
-const rootDir = require("../util/path");
+// const path = require("path");
+
+// const rootDir = require("../util/path");
 
 const adminController = require("../controllers/admin");
 
@@ -18,8 +20,12 @@ router.get("/products", adminController.getProducts);
 
 router.get("/edit-product/:productId",adminController.getEditProduct);
 
+
+//post method for Updating Edited Product
+router.post("/edit-product",adminController.postEditProduct);
+
 //--> /admin/delete-product
-// router.post("/delete-product",adminController.postDeleteProduct);
+router.post("/delete-product",adminController.postDeleteProduct);
 
 module.exports = router;
 // exports.products = products;

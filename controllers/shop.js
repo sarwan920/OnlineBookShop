@@ -3,6 +3,7 @@ const Cart=require("../models/cart");
 
 //get Main '/' route
 exports.getIndex = (req, res, next) => {
+  // console.log("Website is online");
   Product.fetchAll(products => {
     res.render("shop/index", {
       pageTitle: "Shop",
