@@ -79,21 +79,16 @@ module.exports = class Products {
   }
 
 
-//   const array = [2, 5, 9];
-
-// console.log(array);
-
-// const index = array.indexOf(5);
-// if (index > -1) {
-//   array.splice(index, 1);
-// }
-
   //this method recives product id of a product that you want to delete and will will delete it
   static deleteById(id) {
     getProductsFromFile(products => {
       const updatedProducts=products.filter(prod=> prod.id!==id);
       // console.log(updatedProducts);
       fs.writeFile(p,JSON.stringify(updatedProducts),err=>{
+
+        if(!err){
+
+        }
         console.log(err);
       });   
     });
