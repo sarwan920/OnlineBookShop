@@ -71,9 +71,12 @@ exports.postEditProduct = (req, res, next) => {
 };
 
 exports.postDeleteProduct = (req, res, next) => {
-  console.log('Hello World');
-  res.redirect("/admin/products");
-  //
- 
-};
+  prodId = req.body.productId;
+  console.log(prodId);
 
+  Product.deleteById(prodId);
+
+  res.redirect("/admin/products");
+
+
+};
