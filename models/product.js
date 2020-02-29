@@ -2,6 +2,8 @@ const fs = require("fs");
 const path = require("path");
 const random_id = require("random-id");
 
+const Cart=require("./cart");
+
 let len = 20;
 let pattern = "aA0";
 
@@ -82,12 +84,12 @@ module.exports = class Products {
   //this method recives product id of a product that you want to delete and will will delete it
   static deleteById(id) {
     getProductsFromFile(products => {
+      const product=products.find(prod=> prod.id===id);
       const updatedProducts=products.filter(prod=> prod.id!==id);
       // console.log(updatedProducts);
       fs.writeFile(p,JSON.stringify(updatedProducts),err=>{
-
         if(!err){
-
+          Cart.deleteProduct(id,product.price);
         }
         console.log(err);
       });   
