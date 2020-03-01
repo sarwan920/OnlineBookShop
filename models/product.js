@@ -1,31 +1,12 @@
-const fs = require("fs");
-const path = require("path");
-const random_id = require("random-id");
+// const fs = require("fs");
+// const path = require("path");
+// const random_id = require("random-id");
 
-const Cart=require("./cart");
+const db = require('../util/database');
 
-let len = 20;
-let pattern = "aA0";
-
-
-//path to the file which we are reading data from
-const p = path.join(
-  path.dirname(process.mainModule.filename),
-  "data",
-  "products.json"
-);
-
+const Cart = require("./cart");
 
 //callback function to get all content from file
-const getProductsFromFile = cb => {
-  fs.readFile(p, (err, fileContent) => {
-    if (err) {
-      return;
-    } else {
-      cb(JSON.parse(fileContent));
-    }
-  });
-};
 
 
 //main class for the product
@@ -44,56 +25,29 @@ module.exports = class Products {
 
   //this methods adds new product to database and updates the details of the product
   save() {
-    getProductsFromFile(products => {
-      if (this.id) {
-        const existingProductIndex = products.findIndex(prod => prod.id === this.id);
-        const updatedProducts = [...products];
-        updatedProducts[existingProductIndex] = this;
-        fs.writeFile(p, JSON.stringify(updatedProducts), err => {
-          console.log(err);
-        });
 
-      } else {
-        this.id = random_id(len, pattern);
-        products.push(this);
-        fs.writeFile(p, JSON.stringify(products), err => {
-          console.log(err);
-        });
-      }
-
-    });
+    return db.execute('INSERT INTO products(title,price,imageUrl,description) VALUES ( ? , ? , ? , ? )' ,
+      [this.title,this.price,this.imgURL,this.description]
+    );
   }
 
 
 
   //this methods return all the data into file to display on the page
-  static fetchAll(cb) {
-    getProductsFromFile(cb);
+  static fetchAll() {
+   return db.execute('select * from products');
   }
 
 
   //this method is used to find and display specific product details
-  static findById(id, cb) {
-    getProductsFromFile(products => {
-      const product = products.find(p => p.id == id);
-      cb(product);
-    });
+  static findById(id) {
+
   }
 
 
   //this method recives product id of a product that you want to delete and will will delete it
   static deleteById(id) {
-    getProductsFromFile(products => {
-      const product=products.find(prod=> prod.id===id);
-      const updatedProducts=products.filter(prod=> prod.id!==id);
-      // console.log(updatedProducts);
-      fs.writeFile(p,JSON.stringify(updatedProducts),err=>{
-        if(!err){
-          Cart.deleteProduct(id,product.price);
-        }
-        console.log(err);
-      });   
-    });
+
   }
 
 

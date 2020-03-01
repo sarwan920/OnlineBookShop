@@ -48,7 +48,14 @@ exports.postAddProduct = (req, res, next) => {
   const product = new Product(null, title, price, imgURL, description);
 
   //this method is being called to save the product
-  product.save();
+  product.save()
+  .then(()=>{
+  return res.redirect('/');
+
+  })
+  .catch(err=>{
+    console.log(console.log(err))
+  });
 
   //for redirecting to home route
   res.redirect("/");
