@@ -24,14 +24,17 @@ module.exports = class Products {
 
 
   //this methods adds new product to database and updates the details of the product
-  save() {
+  save(id) {
 
-    return db.execute('INSERT INTO products(title,price,imageUrl,description) VALUES ( ? , ? , ? , ? )' ,
+    if(!id){
+      return db.execute('INSERT INTO products(title,price,imageUrl,description) VALUES ( ? , ? , ? , ? )' ,
       [this.title,this.price,this.imgURL,this.description]
     );
+    }else{
+      return db.execute('UPDATE products set title=? ,price=?,imageUrl=?,description=?  where id= ?',[this.title,this.price,this.imgURL,this.description,id]);
+    }
+   
   }
-
-
 
   //this methods return all the data into file to display on the page
   static fetchAll() {
