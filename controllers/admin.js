@@ -10,13 +10,16 @@ exports.getProducts = (req, res, next) => {
 
   //this method is transfering control to product model to
   //get all products and display them in callback
-  Product.fetchAll(products => {
-    res.render("admin/products", {
-      pageTitle: "Admin Products",
-      prods: products,
-      path: "/admin/products",
-      editing: true
+  Product.fetchAll()
+  .then(([products])=>{
+    res.render('admin/products',{
+      pageTitle:products[0].title,
+      prods:products,
+      path:'/admin/products'
     });
+  })
+  .catch(err=>{
+    console.log(err);
   });
 };
 
@@ -50,7 +53,7 @@ exports.postAddProduct = (req, res, next) => {
   //this method is being called to save the product
   product.save()
   .then(()=>{
-  return res.redirect('/');
+  res.redirect('/');
 
   })
   .catch(err=>{
@@ -58,7 +61,7 @@ exports.postAddProduct = (req, res, next) => {
   });
 
   //for redirecting to home route
-  res.redirect("/");
+
 };
 
 
@@ -125,8 +128,16 @@ exports.postEditProduct = (req, res, next) => {
  * we no more want into our database
  */
 exports.postDeleteProduct = (req, res, next) => {
-  prodId = req.body.productId;
-  console.log(prodId);
-  Product.deleteById(prodId);
-  res.redirect("/admin/products");
+  // prodId = req.body.productId;
+  // console.log(prodId);
+  // Product.deleteById(prodId);
+  // res.redirect("/admin/products");
+  const id=req.body.productId;
+  Product.deleteById(id)
+  .then(()=>{
+    res.redirect("/admin/products");
+  })
+  .catch(err=>{
+    console.log(err);
+  });
 };

@@ -19,28 +19,32 @@ exports.getIndex = (req, res, next) => {
 
 exports.getProducts = (req, res, next) => {
   Product.fetchAll()
-  .then(([rows,fieldData])=>{
-    res.render("shop/product-list",{
-      pageTitle:"Products",
-      prods:rows,
-      path:'/products'
+    .then(([rows, fieldData]) => {
+      res.render("shop/product-list", {
+        pageTitle: "Products",
+        prods: rows,
+        path: '/products'
+      });
+    })
+    .catch(err => {
+      console.log(err);
     });
-  })
-  .catch(err=>{
-    console.log(err);
-  });
   // res.sendFile(path.join(rootDir,'views','shop.html'));
 };
 
 exports.getProduct = (req, res, next) => {
-  const prodID = req.params.productId;
-  Product.findById(prodID, product => {
-    res.render("shop/product-detail", {
-      product: product,
-      pageTitle: product.title,
-      path: '/products'
+  const id = req.params.productId;
+  Product.findById(id)
+    .then(([product]) => {
+      res.render('shop/product-detail', {
+        pageTitle: 'Products',
+        product: product[0],
+        path: '/products'
+      });
+    })
+    .catch(err => {
+      console.log(err);
     });
-  });
 };
 
 exports.getCart = (req, res, next) => {

@@ -35,19 +35,19 @@ module.exports = class Products {
 
   //this methods return all the data into file to display on the page
   static fetchAll() {
-   return db.execute('select * from products');
+   return db.execute('SELECT * FROM products');
   }
 
 
   //this method is used to find and display specific product details
   static findById(id) {
-
+    return db.execute('SELECT * FROM products WHERE products.id=?',[id]);
   }
 
 
   //this method recives product id of a product that you want to delete and will will delete it
   static deleteById(id) {
-
+    return db.execute('DELETE FROM products where products.id=?',[id]);
   }
 
 
